@@ -1,0 +1,5 @@
+obj
+obj/Debug/
+obl/Debug/net9.0/
+*.dll
+.DS_Store
