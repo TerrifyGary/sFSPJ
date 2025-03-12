@@ -1,5 +1,12 @@
-obj
-obj/Debug/
-obl/Debug/net9.0/
-*.dll
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Bin
+/obj
+/obj/Debug/*
+/obj/Debug/net9.0/*
+/bin/*
+/bin
+
+# System files
 .DS_Store
+
