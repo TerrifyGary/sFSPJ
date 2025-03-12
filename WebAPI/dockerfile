@@ -1,5 +1,29 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# Use the .NET SDK image as the base image
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+
+# Set the working directory
 WORKDIR /app
+
+# Copy your project files into the container
 COPY . .
+
+# Restore any dependencies (if needed)
+RUN dotnet restore
+
+# Publish the application in release mode
+RUN dotnet publish -c Release -o out
+
+# Use the .NET runtime image to run the application
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the published application from the build stage
+COPY --from=build /app/out .
+
+# Expose the port your app is running on
 EXPOSE 8080
+
+# Set the entry point to run the application
 ENTRYPOINT ["dotnet", "WebAPI.dll"]
