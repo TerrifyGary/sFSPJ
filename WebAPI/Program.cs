@@ -9,6 +9,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
 // Configure Swagger (OpenAPI)
