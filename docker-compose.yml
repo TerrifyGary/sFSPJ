@@ -5,7 +5,6 @@ services:
     container_name: oracle-db
     ports:
       - "1521:1521"
-      - "5500:5500"
     environment:
       ORACLE_PWD: Oracle123
   backend:

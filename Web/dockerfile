@@ -1,6 +1,20 @@
+# Use official Node.js image
 FROM node:18
+
+# Set working directory inside the container
 WORKDIR /app
+
+# Copy package.json and package-lock.json first (for efficient caching)
 COPY package.json package-lock.json ./
+
+# Install dependencies
 RUN npm install
+
+# Copy the rest of the project files
 COPY . .
-CMD ["npm", "start"]
+
+# Expose the port Angular uses by default
+EXPOSE 4200
+
+# Run Angular development server
+CMD ["npm", "run", "start"]
